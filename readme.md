@@ -125,8 +125,12 @@ HTTPS server will start on port 9001 for global access.
 
 # links
 
+* SkyWay
+  * https://webrtc.ecl.ntt.com/
 * WebRTC GW project repository
   * https://github.com/skyway/skyway-webrtc-gateway
+* How to get SkyWay API KEY
+  * https://webrtc.ecl.ntt.com/en/login.html
 
 # license
 
