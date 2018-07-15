@@ -2,7 +2,7 @@
 
 A sample node library for WebRTC GW
 
-## sdk entrypoint
+## library entrypoint
 
 ```
 index.js
