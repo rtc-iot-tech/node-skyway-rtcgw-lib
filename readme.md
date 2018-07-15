@@ -1,6 +1,6 @@
 # node-skyway-rtcgw-lib
 
-A sample node library for WebRTC GW
+A sample node library for [SkyWay WebRTC GW](https://github.com/skyway/skyway-webrtc-gateway)
 
 ## library entrypoint
 
