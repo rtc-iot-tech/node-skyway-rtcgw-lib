@@ -74,6 +74,8 @@ async function start() {
 
 * install dependency libraries
 
+Below will install dependency libraries not only for this library but also example app.
+
 ```bash
 sudo apt-get update
 sudo apt-get -y upgrade
@@ -82,8 +84,7 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 sudo npm -g i yarn
 
-sudo apt-get install -y gstreamer1.0 gstreamer1.0-libav libgstreamer-plugins-base1.0-dev
-sudo apt-get -y install libopencv-dev yasm
+sudo apt-get install -y gstreamer1.0 gstreamer1.0-libav libgstreamer-plugins-base1.0-dev libopencv-dev yasm
 ```
 
 * download `WebRTC GW`
