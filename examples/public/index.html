@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <style>
+      #local-video {
+        position: relative;
+        width: 640px;
+        height: 480px;
+      }
+
+      #local-video video {
+        position: absolute;
+        z-index: 100;
+      }
+      #local-video canvas {
+        position: absolute;
+        z-index: 101;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>A sample app for node-skyway-rtcgw-lib</h1>
+    <p>
+      <form>
+        <label for="remote-id">remote ID</label>
+        <input type="text" name="remote-id" id="remote-id" value="" required />
+        <button type="submit">connect</button>
+      </form>
+    </p>
+    <p>
+      <a href="#" id="recorded-file" target="_blank">recorded file</a>
+    </p>
+
+    <p>
+      <span>Your ID : </span><span id="local-id"></span>
+    </p>
+
+    <p>
+      <h2>local video</h2>
+      <div id="local-video">
+        <video autoplay playsinline muted></video>
+        <canvas></canvas>
+      </div>
+    </p>
+  </body>
+  <script src="./app.js"></script>
+</html>

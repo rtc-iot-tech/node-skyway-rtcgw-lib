@@ -1,0 +1,30 @@
+{
+  "name": "node-rtcgw-sdk",
+  "version": "0.0.1",
+  "description": "Node sdk for WebRTC GW",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch",
+    "create-doc": "jsdoc2md ./index.js > ./docs/index.md;jsdoc2md ./libs/rtcgw/skw-rtc-gw.js > ./docs/skw-rtc-gw.md; jsdoc2md ./libs/rtcgw/media-channel.js > ./docs/media-channel.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nttcom-webcore/nc-stream-sample.git"
+  },
+  "author": "kensaku komatsu, kensaku.komatsu@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nttcom-webcore/nc-stream-sample/issues"
+  },
+  "homepage": "https://github.com/nttcom-webcore/nc-stream-sample#readme",
+  "devDependencies": {
+    "jest": "^23.1.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "gstreamer-superficial": "^1.0.0",
+    "node-fetch": "^2.1.2",
+    "opencv": "^6.0.0"
+  }
+}
