@@ -134,4 +134,4 @@ MIT
 
 # disclaimer
 
-This repository is not official skyway repository. This is just a sample project to utilize SkyWay WebRTC GW, personally.
+This repository is not official [skyway](https://webrtc.ecl.ntt.com/) repository. This is just a sample project to utilize SkyWay WebRTC GW, personally.
