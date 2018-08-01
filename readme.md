@@ -29,9 +29,14 @@ async function start() {
       video: { ip_v4: "127.0.0.1", port: 60000 },
       audio: { ip_v4: "127.0.0.1", port: 60001 }
     }
+    // execute media processing functions here. For more detail, please check our example code
+    // https://github.com/rtc-iot-tech/node-skyway-rtcgw-lib/blob/master/examples/index.js
     await call.answer( localStream, redirect_params );
 
     call.on('stream', async stream => {
+      // In this timing, video and audio will be streamed to specific port numbers,
+      // utilizing RTP/udp
+
       console.log('stream', stream);
     });
 
