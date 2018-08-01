@@ -138,7 +138,7 @@ class skwRtcGw extends EventEmiiter {
    */
   async destroy() {
     try {
-      const res = await do_delete( `/peers/${this.peer.peer_id}`, this.peer );
+      const res = await do_delete( `/peers/${this.peer.peer_id}`, { token: this.peer.token } );
 
       if(this.eventLp) {
         this.eventLp.removeAllListeners( ['data'] );

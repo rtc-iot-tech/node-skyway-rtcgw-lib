@@ -48,7 +48,12 @@ const do_post = async ( path, params ) => {
  */
 const do_delete = async ( path, params ) => {
   try {
-    const res = await _fetch(path, 'DELETE', params)
+    const queryString = Object.keys( params || {} )
+      .map( key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]) )
+      .join('&')
+
+    const _path = `${path}?${queryString}`
+    const res = await _fetch(_path, 'DELETE', params)
 
     return res
   } catch(err) {

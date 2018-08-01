@@ -91,32 +91,35 @@ async function start() {
 /////////////////////////////////////////////////
 // clean up process when process will exit
 
-process.on('cleanup', async () => {
+process.on('cleanup', async (exit_id) => {
   console.log('clean up process');
   try {
     console.log('released')
     await rtcgw.destroy();
     console.log('destroyed')
+    server.stop();
+    console.log('rest server stopped');
+    process.exit( exit_id );
   } catch(err) {
     console.warn(err);
   }
 });
 
-process.on('exit', () => {
-  process.emit('cleanup');
+process.on('SIGTERM', () => {
+  process.emit('cleanup', 0);
 });
 
 // catch ctrl+c event and exit normally
 process.on('SIGINT', () => {
   console.log('Ctrl-C...');
-  process.exit(2);
+  process.emit('cleanup', 2);
 });
 
 //catch uncaught exceptions, trace, then exit normally
 process.on('uncaughtException', e => {
   console.log('Uncaught Exception...');
   console.log(e.stack);
-  process.exit(99);
+  process.emit('cleanup', 99);
 });
 
 //////////////////////////////////////////////////

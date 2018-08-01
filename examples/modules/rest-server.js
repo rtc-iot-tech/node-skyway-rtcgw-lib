@@ -23,6 +23,8 @@ class RestServer extends EventEmitter {
     this.secure_port = secure_port;
     this.peer_id = null
 
+    this.server = null
+
     this.result = []
 
     this.setHandler()
@@ -64,13 +66,20 @@ class RestServer extends EventEmitter {
   }
 
   start() {
-    https.createServer( { key, cert, ca }, this.app )
+    this.server = https.createServer( { key, cert, ca }, this.app )
       .listen( this.secure_port, () => {
         console.log(`https rest server start listening on port ${this.secure_port}`);
       })
     this.app.listen( this.port, () => {
       console.log(`rest server start listening on port ${this.port}`);
     })
+  }
+
+  stop() {
+    if( this.server ) {
+      this.server.close();
+      this.server = null;
+    }
   }
 }
 
