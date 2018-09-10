@@ -45,6 +45,7 @@ const _createScript = ( params ) => {
 
   const script = [
     `udpsrc port=${port} caps=${caps}`,
+    'rtpjitterbuffer',
     'queue',
     'rtph264depay',
     'avdec_h264',
