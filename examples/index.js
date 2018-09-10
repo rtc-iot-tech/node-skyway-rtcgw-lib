@@ -28,10 +28,11 @@ function getPort() {
 
 //////////////////////////////////////////////
 // main functions
-let rtcgw
+let rtcgw, server
+
 async function start() {
   // start REST server (for obtaining peerid, face detection, recorded file and static contents);
-  const server = new RestServer()
+  server = new RestServer()
 
   rtcgw = await open({
     'key': APIKEY
