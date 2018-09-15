@@ -10,7 +10,11 @@ const {
  * @param {object} params
  * @param {boolean} params.video
  * @param {boolean} params.audio
- * @return {Promise<Object>} - {video: { media_id, port, ip_v4, ip_v6}, audio: { media_id, port, ip_v4, ip_v6 } }
+ * @return {Promise<Object>} - {
+ *   video: { media_id, port, ip_v4, ip_v6},
+ *   audio: { media_id, port, ip_v4, ip_v6 },
+ *   constraints
+ * }
  */
 async function getUserMedia( params ) {
   let video = null, audio = null;
@@ -54,7 +58,7 @@ async function getUserMedia( params ) {
           }
         });
       } else {
-        return Object.assign( {}, accu, { [key]: false } );
+        return Object.assign( {}, accum, { [key]: false } );
       }
     }, {});
 

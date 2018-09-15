@@ -24,6 +24,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "gstreamer-superficial": "^1.0.0",
+    "mqtt": "^2.18.8",
     "node-fetch": "^2.1.2",
     "opencv": "^6.0.0"
   }

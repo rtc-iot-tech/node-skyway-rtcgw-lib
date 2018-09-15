@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <style>
+      #remote-video {
+        width: 640px;
+        height: 480px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>A sample app for node-skyway-rtcgw-lib - receiver</h1>
+    <p>
+      <form>
+        <label for="remote-id">remote ID</label>
+        <input type="text" name="remote-id" id="remote-id" value="" required /><br />
+        <label for="source-id">source ID</label>
+        <input type="text" name="source-id" id="source-id" value="" required /><br />
+        <button type="submit">connect</button>
+      </form>
+    </p>
+
+    <p>
+      <span>Your ID : </span><span id="local-id"></span>
+    </p>
+
+    <p>
+      <h2>remote video</h2>
+      <div id="remote-video">
+        <video autoplay playsinline muted></video>
+      </div>
+    </p>
+  </body>
+  <script src="./app.js"></script>
+</html>

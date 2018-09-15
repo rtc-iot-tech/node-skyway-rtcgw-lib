@@ -17,7 +17,8 @@ async function start(remoteID) {
 
     const call = peer.call( remoteID, stream, {
       metadata: {
-        peer_id: local_id
+        peer_id: local_id,
+        mode: 'send'
       }
     } )
 

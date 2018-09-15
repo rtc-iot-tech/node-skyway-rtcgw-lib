@@ -11,6 +11,7 @@ class GstHelper extends EventEmitter {
 
     this.pipeline = null
     this.appsink = null
+    this.appsrc  = null
     this.terminated = false
   }
 
@@ -31,9 +32,10 @@ class GstHelper extends EventEmitter {
   start( script ) {
     this.pipeline = new gstreamer.Pipeline(script)
     this.appsink = this.pipeline.findChild('sink')
-
+    this.appsrc  = this.pipeline.findChild('src')
 
     this.pipeline.play()
+
     if( this.appsink && typeof this.appsink.pull === 'function' )
       this.appsink.pull( this._handlePull.bind(this) )
   }
@@ -50,8 +52,25 @@ class GstHelper extends EventEmitter {
     this.terminated = true
     this.pipeline.stop()
 
-    this.appsink = null;
-    this.pipeline = null;
+    delete this.appsink
+    delete this.appsrc
+    delete this.pipeline
+  }
+
+  /**
+   * push binary data to appsrc if exists
+   *
+   * @param {binary} data
+   * @param {object} caps
+   * @method GstHelper#push
+   * @example
+   *
+   * gst_helper.push(data, caps)
+   */
+  push( data, caps ) {
+    if(!this.terminated && this.appsrc && typeof this.appsrc.push === 'function' ) {
+      this.appsrc.push(data)
+    }
   }
 
   /**
@@ -61,20 +80,20 @@ class GstHelper extends EventEmitter {
    * @param {binary} buf
    * @private
    */
-  _handlePull( buf ) {
+  _handlePull( buf, caps ) {
     if(buf) {
-      this.emit('data', buf)
+      this.emit('data', buf, caps)
 
       if( this.terminated ) return
 
       this.appsink.pull(this._handlePull.bind(this))
     } else {
-      console.warn("handlePull - buf is null, restart pull after 250 msec when not terminated")
+      console.warn("handlePull - buf is null, restart pull after 15 msec when not terminated")
       setTimeout( () => {
         if( ! this.terminated ) {
           this.appsink.pull(this._handlePull.bind(this))
         }
-      }, 250)
+      }, 15)
     }
   }
 
