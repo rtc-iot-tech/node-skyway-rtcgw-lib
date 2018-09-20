@@ -30,14 +30,18 @@ class GstHelper extends EventEmitter {
    * gst_helper.on('data', data => { ... })
    */
   start( script ) {
-    this.pipeline = new gstreamer.Pipeline(script)
-    this.appsink = this.pipeline.findChild('sink')
-    this.appsrc  = this.pipeline.findChild('src')
+    try {
+      this.pipeline = new gstreamer.Pipeline(script)
+      this.appsink = this.pipeline.findChild('sink')
+      this.appsrc  = this.pipeline.findChild('src')
 
-    this.pipeline.play()
+      this.pipeline.play()
 
-    if( this.appsink && typeof this.appsink.pull === 'function' )
-      this.appsink.pull( this._handlePull.bind(this) )
+      if( this.appsink && typeof this.appsink.pull === 'function' )
+        this.appsink.pull( this._handlePull.bind(this) )
+    } catch(err) {
+      console.warn(err)
+    }
   }
 
   /**

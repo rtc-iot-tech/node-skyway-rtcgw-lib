@@ -47,13 +47,6 @@ class Scenario {
     } );
 
     console.log( localStream.video )
-    //setTimeout( ev => {
-    //  console.log(`push localStream ${JSON.stringify( localStream.video )}`);
-    //  this.destinations.push( {
-    //    host: localStream.video.ip_v4 || localStream.video.ip_v6,
-    //    port: localStream.video.port
-    //  })
-    //}, 3000)
 
     this.videoSender.on('data', (data, caps) => {
       this.destinations.forEach( dest => {
